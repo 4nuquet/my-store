@@ -1,0 +1,28 @@
+<div class="container mx-auto p-4">
+  <div class="card border-primary h-100">
+    <h4 class="card-title text-primary m-2">ToDo List</h4>
+    <div class="row mx-2">
+      <div class="col-6">
+        <app-form
+        (eventSubmitForm)="createNewTask($event)"
+        ></app-form>
+      </div>
+      <div class="col-6">
+        <app-list>
+          <ng-container *appList>
+            <app-alert *ngFor="let item of todos$ | async; index as key"
+            [data]="item"
+            [key]="key"
+            (eventDeleteTask)="deleteTask($event)"
+            (eventDoneTask)="doneTask($event)"
+            (eventEditTask)="data = $event">
+            </app-alert>
+          </ng-container>
+        </app-list>
+      </div>
+    </div>
+  </div>
+</div>
+<app-modal
+[data]="data"
+(eventSubmitModal)="editTask($event)"></app-modal>

@@ -1,0 +1,26 @@
+<form #formTask="ngForm" (ngSubmit)="submitTask()" [formGroup]="taskForm">
+  <div class="form-group">
+    <span class="text-muted">type a new task</span>
+    <input
+      data-cy="form-title"
+      type="text"
+      class="form-control"
+      name="title"
+      formControlName="title"
+      [value]="task.title"
+    />
+  </div>
+  <div class="form-group">
+    <span class="text-muted">type a info about task</span>
+    <input
+    data-cy="form-info"
+      type="text"
+      class="form-control"
+      formControlName="info"
+      [value]="task.info"
+    />
+  </div>
+  <div class="form-group d-flex flex-column align-items-end">
+    <button data-cy="btn-form" type="submit" class="btn btn-primary">Save</button>
+  </div>
+</form>
